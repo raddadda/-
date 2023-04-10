@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>쇼핑몰</title>
+
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+
+
+    <div th:fragment="header">
+        <div class="container-fluid p-0">
+                <div class="resume-section-content">
+
+                    <!--홈버튼-->
+                    <ul class="mb-0">
+                            <a class="navbar-brand" th:href="@{/main}" sec:authorize="isAuthenticated()">
+                                <h2 class="mb-0">
+
+                                    <span class="text-primary">Chop</span>
+                                </h2>
+                            </a>
+                            <a class="navbar-brand" th:href="@{/}" sec:authorize="!isAuthenticated()">
+                                <h2 class="mb-0">
+
+                                    <span class="text-primary">Chop</span>
+                                </h2>
+                            </a>
+                    </ul>
+                    <!----홈버튼 아래 글씨---->
+                    <p class="lead mb-5">안녕하세요. 최영찬 쇼핑몰 프로젝트입니다.</p>
+                </div>
+
+            <hr class="m-0" />
+
+
+    </div>
+    </div>
+
+</html>

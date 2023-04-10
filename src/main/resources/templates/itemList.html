@@ -1,0 +1,72 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>쇼핑몰</title>
+
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+  <!-- Font Awesome icons (free version)-->
+  <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+  <!-- Google fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+
+  <link href="/css/styles.css" rel="stylesheet" />
+  <head th:replace="fragments/header :: header" />
+</head>
+
+<body>
+
+  <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+  <!--상품 검색-->
+  <form sec:authorize="isAuthenticated()" th:action="@{/item/list}" method="get">
+    <input type="text" name="searchKeyword">
+    <button class="btn btn-outline-primary" type="submit">검색</button>
+  </form>
+
+  <form sec:authorize="!isAuthenticated()" th:action="@{/nonlogin/item/list}" method="get">
+    <input type="text" name="searchKeyword">
+    <button class="btn btn-outline-primary" type="submit">검색</button>
+  </form>
+
+
+    <div class="container px-4 px-lg-5 mt-5">
+      <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+      <div class="col mb-5" th:each="item : ${items}">
+    <div class="card h-100">
+      <!-- Product image-->
+      <img class="card-img-top" th:src="@{${item.getImgPath()}}" alt="..."  />
+      <!-- Product details-->
+      <div class="card-body p-4">
+        <div class="text-center">
+          <!--상품이름-->
+          <h5 class="fw-bolder" th:text="${item.getItemName()}">아이템이름</h5>
+          <!--상품 가격-->
+          <p th:text="|${item.getPrice()} 원|">아이템 가격</p>
+        </div>
+      </div>
+
+
+        <div class="text-center"><a class="btn btn-outline-primary mt-auto" th:href="@{/item/detail/{id}(id=${item.getId()})}">상세보기</a></div>
+
+    </div>
+  </div>
+
+      </div>
+    </div>
+
+
+
+
+
+</body>
+
+<div th:replace="fragments/footer :: footer"/>
+</html>

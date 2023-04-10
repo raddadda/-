@@ -1,0 +1,99 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--header-->
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>쇼핑몰</title>
+
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+  <!-- Font Awesome icons (free version)-->
+  <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+  <!-- Google fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+
+  <link href="/css/styles.css" rel="stylesheet" />
+
+  <head th:replace="fragments/header :: header">
+
+
+</head>
+  <!---------->
+<body>
+
+<div th:replace="fragments/bodyHeader :: bodyHeader"/>
+
+<section class="vh-100" style="background-color: #eee;">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-9 col-xl-9 ">
+        <div class="card text-black" style="border-radius: 40px;">
+
+<div class="container">
+  <main>
+    <div class="py-5 text-center">
+      <h3>상품 수정</h3>
+    </div>
+    <hr/>
+    <div >
+      <!--postMapping 상품 수정-->
+      <form th:action="@{/item/modify/pro/{id}(id=${item.id})}" method="post" enctype="multipart/form-data">
+        <div>
+          <hr/>
+          <div class="col-12">
+            <label class="form-label" for="itemSoldout">상품 상태</label><br/>
+            <input type="radio" name="itemSoldout" id="itemSoldout" value="0">판매중<br/>
+            <input type="radio" name="itemSoldout" id="itemSoldout" value="1">품절<br/>
+
+          </div>
+          <div class="col-12">
+            <label for="itemName" class="form-label">상품 이름</label>
+            <input type="text" class="form-control" id="itemName" name="itemName" th:placeholder="${item.getItemName()}">
+
+          </div>
+          <div class="col-12">
+            <label for="itemInfo" class="form-label">상품 설명</label>
+            <input type="text" class="form-control" name="itemInfo" id="itemInfo" th:placeholder="${item.getItemInfo()}">
+
+          </div>
+          <div class="col-12">
+            <label for="price" class="form-label">상품 가격</label>
+            <input type="text" class="form-control" id="price" name="price" th:placeholder="${item.getPrice()}">
+
+          </div>
+          <div class="col-12">
+            <label for="stockQuantity" class="form-label">상품 재고</label>
+            <input type="text" class="form-control" id="stockQuantity" name="stockQuantity"
+                   th:placeholder="${item.getStockQuantity()}">
+
+          </div>
+          <div class="col-12">
+            <label for="imgFile" class="form-label">상품 이미지 업로드</label>
+            <input type="file" class="form-control" id="imgFile" name="imgFile">
+          </div>
+        </div>
+        <hr class="my-4">
+        <button class="w-100 btn btn-primary btn-lg mb-3" type="submit">상품 수정</button>
+      </form>
+    </div>
+  </main>
+
+
+</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Footer-->
+<div th:replace="fragments/footer :: footer" />
+<!----------->
+</body>
+
+</html>

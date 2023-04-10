@@ -1,0 +1,90 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+
+<div class="header" th:fragment="bodyHeader">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav">
+                <li>
+                    <form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()" >
+                        <button class="nav-link js-scroll-trigger btn btn-primary" type="submit">
+                            로그아웃
+                        </button>
+                    </form>
+                </li>
+
+                <li>
+                    <form th:action="@{/signin}" sec:authorize="!isAuthenticated()">
+                        <button class="nav-link js-scroll-trigger btn btn-primary" type="submit">
+                            로그인
+                        </button>
+                    </form>
+                </li>
+
+                <li>
+                    <form th:action="@{/signup}" sec:authorize="!isAuthenticated()">
+                        <button class="nav-link js-scroll-trigger btn btn-primary" type="submit">
+                            회원가입
+                        </button>
+                    </form>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+      <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+
+        <div class="collapse navbar-collapse" id="navbarsExample03">
+
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item">
+                <!--상품 관리 버튼  , 권한 : admin  ,  상품관리페이지로 이동-->
+                    <a class="nav-link js-scroll-trigger" sec:authorize="hasAnyAuthority('ROLE_ADMIN')" th:href="@{/item/modify/{id}(id=${member.getId()})}">상품 관리</a>
+
+                </li>
+                <!--상품 등록 버튼  , 권한 : admin  , 상품등록페이지로 이동-->
+                <li>
+                    <a class="nav-link js-scroll-trigger" sec:authorize="hasAnyAuthority('ROLE_ADMIN')" href="/admin/item/new">상품 등록</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" sec:authorize="isAuthenticated()" th:href="@{/basket/{id}(id=${member.getId()})}">장바구니</a>
+                </li>
+
+                <li>
+                    <a class="nav-link js-scroll-trigger" sec:authorize="isAuthenticated()" th:href="@{/orderHist/{id}(id=${member.getId()})}">주문 내역</a>
+                </li>
+                <!--상품 리스트 버튼 , 권한 : 로그인한 유저-->
+                <li>
+                    <a class="nav-link js-scroll-trigger" th:href="@{/item/list}" sec:authorize="isAuthenticated()">All Products</a>
+                </li>
+                <!--상품 리스트 버튼 , 권한 : 비로그인 유저-->
+                <li>
+                    <a class="nav-link js-scroll-trigger" th:href="@{/nonlogin/item/list}"sec:authorize="!isAuthenticated()">All Products</a>
+                </li>
+
+
+
+
+
+            </ul>
+
+
+        </div>
+
+    </nav>
+
+</div>

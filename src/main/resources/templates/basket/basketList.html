@@ -1,0 +1,144 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>쇼핑몰</title>
+
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+
+    <link href="/css/styles.css" rel="stylesheet" />
+    <head th:replace="fragments/header :: header" />
+</head>
+
+<body>
+
+<div th:replace="fragments/bodyHeader :: bodyHeader"/>
+
+<!--둥근네모, 회색배경-->
+<section class="vh-100" style="background-color: #eee;">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-15 col-xl-9 ">
+                <div class="card text-black" style="border-radius: 40px;">
+                    <div class="py-5 text-center">
+                        <h2> 장바구니 목록</h2>
+                    </div>
+<!---->
+
+    <div class="container-fluid mt-3">
+        <div class="row">
+            <main class="col-md-9 ms-sm-auto col-lg-12 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped table-sm">
+                        <thead>
+                        <tr>
+                            <th scope="col">번호</th>
+                            <th scope="col">상품ID</th>
+                            <th scope="col">상품명</th>
+                            <th scope="col">수량</th>
+                            <th scope="col">가격</th>
+                            <th scope="col">담은날짜</th>
+                            <th scope="col">삭제</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="basketItem, i: ${basketItems}">
+                            <td th:text="${i.count}">1</td>
+                            <td th:text="${basketItem.getItem().getId()}">상품아이디</td>
+                            <td th:text="${basketItem.getItem().getItemName()}">상품명</td>
+                            <td th:text="${basketItem.getCount()}">수량</td>
+                            <td th:text="${basketItem.getItem().getPrice() * basketItem.getCount()}">가격</td>
+                            <td th:text="${basketItem.getBasket().getCreateDate()}">날짜</td>
+                            <!--BasketController 장바구니 아이템 빼기-->
+                            <td class="btn btn-outline-dark"><a th:href="@{/basket/{id}/{basketItemId}/delete(id=${basketItem.getBasket().getMember().id}, basketItemId=${basketItem.getId()})}" style="text-decoration: none">삭제</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <hr>
+            </main>
+        </div>
+    </div>
+
+
+
+<!--총 수량-->
+    <div class=" row-cols-1 row-cols-md-3 mb-3 text-center mt-3">
+        <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-header py-3">
+                    <h4 class="my-0 fw-normal">총 수량</h4>
+                </div>
+                <form class="card-body" method="post">
+                    <h2 class="card-title pricing-card-title" th:text="|${member.getBasket().getCount()} 개|">$0</h2>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<!---->
+
+    <!--총 가격-->
+    <div>
+        <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-header py-3">
+                    <h4 class="text-center">총 결제금액</h4>
+                </div>
+                <form class="card-body" onsubmit="return orderitem();" th:action="@{/basket/checkout/{id}(id=${member.getId()})}" method="post">
+                    <h2 class="card-title pricing-card-title" th:text="|${totalPrice} ₩|">$0</h2>
+                    <button type="submit" class="w-100 btn btn-lg btn-outline-primary">구매하기</button>
+                </form>
+                <script th:inline="javascript">
+                            /* <![CDATA[ */
+                            function orderitem() {
+
+                                var totalPrice = [[${totalPrice}]];
+
+
+                                    <!--document.getElementById("buy").innerText = count-->
+                                    return true
+
+                            }
+
+                            <!--button.addEventListener("click",additem)-->
+                            /* ]]> */
+                </script>
+            </div>
+        </div>
+    </div>
+    <!---->
+
+
+
+
+
+
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+
+</body>
+
+<!-- Footer-->
+<div th:replace="fragments/footer :: footer" />
+<!----------->
+
+
+</html>
