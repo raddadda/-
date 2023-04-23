@@ -104,7 +104,6 @@ public class ItemController {
         Page<Item> items = null;
         //검색이 들어오지 않았을 때
         if (searchKeyword == null) {
-
             items = itemService.allItemViewPage(pageable);
         } else {
             items = itemService.itemSearchList(searchKeyword, pageable);
@@ -223,6 +222,21 @@ public class ItemController {
 
 
         }else{
+            return "redirect:/main";
+        }
+    }
+
+    //상품 삭제
+
+    @GetMapping("/item/delete/{id}")
+    public String itemDelete(@PathVariable("id") Long id, @AuthenticationPrincipal PrincipalDetails principalDetails){
+        if(principalDetails.getMember().getRole().equals("ROLE_ADMIN")){
+           // Member member = itemService.itemDetail(id)
+            itemService.itemDelete(id);
+
+            return "redirect:/main";
+        }
+        else {
             return "redirect:/main";
         }
     }

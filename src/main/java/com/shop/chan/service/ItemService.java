@@ -4,6 +4,7 @@ package com.shop.chan.service;
 import com.shop.chan.config.PrincipalDetails;
 import com.shop.chan.dto.ItemSearchDto;
 import com.shop.chan.dto.MainItemDto;
+import com.shop.chan.entity.BasketItem;
 import com.shop.chan.entity.Item;
 import com.shop.chan.entity.Member;
 import com.shop.chan.repository.ItemRepository;
@@ -31,6 +32,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class ItemService {
     private final ItemRepository itemRepository;
+    private final BasketService basketService;
     @Transactional
     //상품 등록
     public void saveItem(Item item, MultipartFile imgFile) throws Exception {
@@ -101,43 +103,19 @@ public class ItemService {
         update.setImgPath("/files/"+fileName);
         itemRepository.save(update);
     }
-    //개별주문
 
- /*   @Transactional(readOnly = true)
-    public ItemFormDto getItemDetail(Long itemId) {
 
-        // 상품 엔티티를 ItemFormDto 객체로 변환하고 itemImgDtoList 멤버변수를 초기화
-        Item item = itemRepository.findById(itemId).orElseThrow(EntityNotFoundException::new);
-        ItemFormDto itemFormDto = ItemFormDto.of(item);
+    //상품 삭제
 
-        return itemFormDto;
+    @Transactional
+    public void itemDelete(Long id){
+        List<BasketItem> items = basketService.findBasketItemByItemId(id);
 
-    }*/
-/*    public Long updateItem(ItemFormDto itemFormDto)  {
-        Item item = itemRepository.findById(itemFormDto.getId()).orElseThrow(EntityNotFoundException::new);
-        item.updateItem(itemFormDto);
+        for(BasketItem item : items){
+            basketService.basketItemDelete(item.getId());
+        }
 
-        return item.getId();
-    }*/
-
-  /*  //상품 수정
-    public void updateItem(Long itemId, String itemName, int price, int stockQuantity, String itemInfo){
-        Item findItem = itemRepository.findById(itemId).orElseThrow(EntityNotFoundException::new);
-
-        findItem.setItemName(itemName);
-        findItem.setPrice(price);
-        findItem.setStockQuantity(stockQuantity);
-        findItem.setItemInfo(itemInfo);
+        itemRepository.deleteById(id);
     }
-    public List<Item> findItems(){
-        return itemRepository.findAll();
-    }
-*/
-
-    //메인 페이지 상품 목록
-/*@Transactional(readOnly = true)
-    public List<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto){
-        return itemRepository.getMainItemPage(itemSearchDto);
-}*/
 
 }
