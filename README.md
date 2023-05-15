@@ -18,7 +18,7 @@ Spring boot 쇼핑몰
 * 운영체제 :  맥 OS  
 * IDE : IntelliJ  
 * JDK 버전 : JDK 17  
-* 데이터 베이스 :  H2 database
+* 데이터 베이스 :  MariaDB
 * 빌드 툴 : Gradle  
 
 <h1>🔌 Dependencies</h1>
@@ -26,6 +26,7 @@ Spring boot 쇼핑몰
 * Spring Boot DevTools  
 * Lombok
 * H2 Database
+* MariaDB
 * Spring Data JPA  
 * Spring Security  
 * Spring Web  
