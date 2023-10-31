@@ -1,3 +1,6 @@
+이력서 포트폴리오 링크
+https://web-react-resume4-euegqv2blnvbcqlo.sel5.cloudtype.app/
+
 Spring boot 쇼핑몰
 
 2022-01월 프로젝트
