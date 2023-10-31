@@ -1,4 +1,4 @@
-📄<h1>이력서 포트폴리오 링크</h1>
+<h1>📄이력서 포트폴리오 링크</h1>
 https://web-react-resume4-euegqv2blnvbcqlo.sel5.cloudtype.app/
 
 Spring boot 쇼핑몰
