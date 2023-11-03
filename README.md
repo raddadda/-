@@ -1,3 +1,4 @@
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white"/>
 <h1>📄이력서 포트폴리오 링크</h1>
 https://web-react-resume4-euegqv2blnvbcqlo.sel5.cloudtype.app/
 
