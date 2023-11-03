@@ -1,6 +1,6 @@
-<img src="https://img.shields.io/badge/javascript-F7DF1E?style=flat&logo=javascript&logoColor=white"/>
-<img src="https://img.shields.io/badge/git-F05032?style=flat&logo=git&logoColor=white"/>
-<img src="https://img.shields.io/badge/spring-6DB33F?style=flat&logo=spring&logoColor=white"/>
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=flat&logo=javascript&logoColor=white"/><img src="https://img.shields.io/badge/git-F05032?style=flat&logo=git&logoColor=white"/><img src="https://img.shields.io/badge/spring-6DB33F?style=flat&logo=spring&logoColor=white"/>
+
+
 <h1>📄이력서 포트폴리오 링크</h1>
 https://web-react-resume4-euegqv2blnvbcqlo.sel5.cloudtype.app/
 
