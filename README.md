@@ -3,7 +3,7 @@
 <img src="https://img.shields.io/badge/node.js-339933?style=flat&logo=node.js&logoColor=white"/>
 <img src="https://img.shields.io/badge/java-007054?style=flat&logo=java&logoColor=white"/>
 
-<h1>채팅웹서비스 프로젝트 바로가기</h1>
+<h1>🧷채팅웹서비스 프로젝트 바로가기</h1>
 https://github.com/raddadda/chatta/tree/develop
 
 <h1>📄이력서 포트폴리오 링크</h1>
