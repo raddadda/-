@@ -72,11 +72,8 @@ Spring boot 쇼핑몰
 
 
 
-https://github.com/raddadda/raddadda/assets/102424773/bfa5e202-cfa6-4d45-93e1-44e829a26978.mp4
 
-
-https://github.com/raddadda/raddadda/assets/102424773/d4d94485-154c-4293-a7a2-b6c634459da5
-
+https://github.com/raddadda/raddadda/assets/102424773/55218c15-ccb2-4a90-b040-26d5850b8211
 
 
 
